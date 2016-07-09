@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://server.ws/" xmlns:tns="http://server.ws/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="picagem" type="tns:picagem"/>
+
+  <xs:element name="picagemResponse" type="tns:picagemResponse"/>
+
+  <xs:complexType name="picagem">
+    <xs:sequence>
+      <xs:element name="dadosrasp" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="picagemResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

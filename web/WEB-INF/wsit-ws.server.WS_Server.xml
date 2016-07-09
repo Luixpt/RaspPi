@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+ <definitions 
+ xmlns="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+ xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="WS_Server" targetNamespace="http://server.ws/" xmlns:tns="http://server.ws/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:fi="http://java.sun.com/xml/ns/wsit/2006/09/policy/fastinfoset/service" xmlns:tcp="http://java.sun.com/xml/ns/wsit/2006/09/policy/soaptcp/service" 
+ >
+    <message name="picagem"/>
+    <message name="picagemResponse"/>
+    <portType name="WS_Server">
+        <operation name="picagem">
+            <input message="tns:picagem"/>
+            <output message="tns:picagemResponse"/>
+        </operation>
+    </portType>
+    <binding name="WS_ServerPortBinding" type="tns:WS_Server">
+        <wsp:PolicyReference URI="#WS_ServerPortBindingPolicy"/>
+        <operation name="picagem">
+            <input/>
+            <output/>
+        </operation>
+    </binding>
+    <service name="WS_Server">
+        <port name="WS_ServerPort" binding="tns:WS_ServerPortBinding"/>
+    </service>
+    <wsp:Policy wsu:Id="WS_ServerPortBindingPolicy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <tcp:OptimizedTCPTransport enabled="true"/>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+</definitions>
